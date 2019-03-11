@@ -1,1 +1,1 @@
-# web
+# web Mysql configurado pelo PHPMYADMIN

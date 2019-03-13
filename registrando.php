@@ -10,7 +10,7 @@
 
 <style>
     body{
-        background-color: #ececf6;
+        background-color: #d7d7e1;
     }
     div#interface{
         background-color:#c8cbcf;
@@ -20,14 +20,6 @@
         border: 1px solid #b3b7bb;
         border-radius:20px;
     }
-    .usca{
-         background-color:#c8cbcf;
-         width:600px;
-         margin:10px auto 10px auto;
-         padding:25px 25px 25px 25px;
-         border: 1px solid #b3b7bb;
-         border-radius:20px;
-     }
 </style>
 
 <body>

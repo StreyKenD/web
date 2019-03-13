@@ -11,7 +11,7 @@
 </head>
 <style>
     body{
-        background-color: #ececf6;
+        background-color: #d7d7e1;
     }
     div#interface{
         background-color:#c8cbcf;

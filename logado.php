@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <?php
+    session_start();
+    if(! empty($_SESSION['logged_in']))
+    {
+        ?>
+    <p>here is my super-secret content</p>
+    <a href="deslogando.php">Click here to log out</a>
+    <?php
+    }
+    else
+        {
+            echo'You are not logged in. <a href="login.php">Click here</a> to log in.';
+        }
+    if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
+    {
+        unset($_SESSION['login']);
+        unset($_SESSION['senha']);
+        header('location:login.php');
+    }
+    ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -11,7 +31,7 @@
 </head>
 <style>
     body{
-        background-color: #ececf6;
+        background-color: #d7d7e1;
     }
 
     div#interface{
@@ -27,14 +47,8 @@
 <div id="interface">
 <body>
     <?php
-        $login=$_GET["login"];
-        echo "Seja Bem-vindo! A summoners Dryft! $login&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
-        $clicado=$_GET['click'];
-        echo'<input class="btn btn-primary" type="submit" id="sair" value="Sair" onclick="window.location.href=`?click=1&login='.$login.'`"/><br/>';
-        $nome=$login;
-        if ($clicado == '1'){
-            header("Location: deslogando.php?nome=".$nome."");
-        }
+        $nick = $_SESSION['login'];
+        echo "Seja Bem-vindo! A summoners Dryft! $nick</br>";
     $conn = mysqli_connect("127.0.0.1","root","","seti");
     $sql = "SELECT Nome,Sobrenome,Login,Email,Senha FROM usuarios";
     $result = mysqli_query($conn, $sql)or die(mysqli_error($conn));
@@ -42,7 +56,7 @@
         $int = "0";
             foreach($row as $item => $value){
                 $int += 1;
-                echo"$int";
+                echo"$item";
                 $div = gmp_div_r("$int","5");
                 if($int == 0){
                     echo"<form class=\"login\" method=\"get\" action=\"login.php\">";
